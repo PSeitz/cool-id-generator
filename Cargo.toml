@@ -1,5 +1,7 @@
 [package]
 authors = ["Pascal Seitz <pascal.seitz@sap.com>"]
+license = "MIT"
+description = "generates the best ids, which are fun to read and fun to eat"
 edition = "2018"
 name = "alfred-the-obese-and-friendly-turbo-uuid-generator"
 version = "0.1.0"

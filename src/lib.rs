@@ -1,7 +1,7 @@
 /// This is alfred-the-obese-and-friendly-turbo-uuid-generator
 ///
 /// It generates the best ids, because alfred is really good at it.
-/// honest-turbo-tailor-gregory, romantic-robot-chicken-kenneth and happy-ultra-barista-shane approve.
+/// honest-turbo-tailor-gregory, romantic-robot-chicken-kenneth and happy-ultra-barista-shane would approve.
 
 use crate::job::JOBS;
 use crate::animal::ANIMALS;
