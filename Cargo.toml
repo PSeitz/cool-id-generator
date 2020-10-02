@@ -1,9 +1,14 @@
 [package]
 authors = ["Pascal Seitz <pascal.seitz@sap.com>"]
-license = "MIT"
 description = "generates the best ids, which are fun to read and fun to eat"
 edition = "2018"
 name = "alfred-the-obese-and-friendly-turbo-uuid-generator"
-version = "0.1.0"
+version = "0.1.1"
+readme = "README.md"
+repository = "https://github.com/PSeitz/alfred-the-obese-and-friendly-turbo-uuid-generator"
+homepage = "https://github.com/PSeitz/alfred-the-obese-and-friendly-turbo-uuid-generator"
+keywords = ["id", "generator", "human", "readable"]
+license = "Unlicense"
+
 [dependencies]
 rand = "0.7.3"
