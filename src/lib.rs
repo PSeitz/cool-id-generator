@@ -1,7 +1,19 @@
-/// This is alfred-the-obese-and-friendly-turbo-uuid-generator
+/// This is cool-id-generator
 ///
-/// It generates the best ids, because alfred is really good at it.
+/// It makes memorable ids.
 /// honest-turbo-tailor-gregory, romantic-robot-chicken-kenneth and happy-ultra-barista-shane would approve.
+///
+/// ```rust
+/// #[macro_use]
+/// use cool_id_generator::{get_id, get_long_id};
+///
+/// fn main() {
+///     let my_id = get_id();
+///     println!("{:?}", my_id);
+///     let my_long_id = get_long_id();
+///     println!("{:?}", my_long_id);
+/// }
+/// ```
 
 use crate::job::JOBS;
 use crate::animal::ANIMALS;
