@@ -20,6 +20,8 @@ use crate::job::JOBS;
 use crate::animal::ANIMALS;
 use crate::adjective::ADJECTIVES;
 use crate::names::NAMES;
+use crate::prefix::JOBS_PREFIX;
+use crate::prefix::ANIMAL_PREFIX;
 
 use rand::thread_rng;
 use rand::seq::SliceRandom;
@@ -28,6 +30,7 @@ mod adjective;
 mod animal;
 mod names;
 mod job;
+mod prefix;
 
 /// Creates ids in the format of {adjective}-{prefix}-{animal|job}-{name}
 /// e.g. "unpleasant-steampunk-poet-gerald"
@@ -129,15 +132,13 @@ pub fn get_very_long_id() -> String {
 
 #[inline]
 fn get_animal_prefix(rng: &mut rand::rngs::ThreadRng) -> &'static str {
-    let prefixes = ["-robot","-mecha","-dino","-laser","-turbo","-rocket","-dressed","-space"];
-    let prefix = prefixes.choose(rng).unwrap();
+    let prefix = ANIMAL_PREFIX.choose(rng).unwrap();
     prefix
 }
 
 #[inline]
 fn get_job_prefix(rng: &mut rand::rngs::ThreadRng) -> &'static str {
-    let prefixes = ["-robot","-laser","-turbo","-space","-steampunk","-jobless","-homeless"];
-    let prefix = prefixes.choose(rng).unwrap();
+    let prefix = JOBS_PREFIX.choose(rng).unwrap();
     prefix
 }
 
