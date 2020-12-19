@@ -52,12 +52,12 @@ pub fn get_id() -> String {
     if is_animal_or_job {
         // It's an animal!
         let prefix = get_animal_prefix(&mut rng);
-        // println!("Total Combinations {:?}", combinations_animals * prefixes.len());
+        // println!("Total Combinations {:?}", combinations_animals * ANIMAL_PREFIX.len());
         format!("{}{}-{}-{}", adj1, prefix, animal, name)
     }else{
         // It's a job!
         let prefix = get_job_prefix(&mut rng);
-        // println!("Total Combinations {:?}", combinations_jobs * prefixes.len());
+        // println!("Total Combinations {:?}", combinations_jobs * JOBS_PREFIX.len());
         format!("{}{}-{}-{}", adj1, prefix, job, name)
     }
 
@@ -85,12 +85,12 @@ pub fn get_long_id() -> String {
         // It's an animal!
         let prefix = get_animal_prefix(&mut rng);
 
-        // println!("Total Combinations {:?}", combinations_animals * prefixes.len());
+        // println!("Total Combinations {:?}", combinations_animals * ANIMAL_PREFIX.len());
         format!("{}-the-{}-and-{}{}-{}", name, adj1, adj2, prefix, animal)
     }else{
         // It's a job!
         let prefix = get_job_prefix(&mut rng);
-        // println!("Total Combinations {:?}", combinations_jobs * prefixes.len());
+        // println!("Total Combinations {:?}", combinations_jobs * JOBS_PREFIX.len());
         format!("{}-the-{}-and-{}{}-{}", name, adj1, adj2, prefix, job)
     }
 
@@ -119,15 +119,55 @@ pub fn get_very_long_id() -> String {
         // It's an animal!
         let prefix = get_animal_prefix(&mut rng);
 
-        // println!("Total Combinations {:?}", combinations_animals * prefixes.len());
+        // println!("Total Combinations {:?}", combinations_animals * ANIMAL_PREFIX.len());
         format!("{}-{}-the-{}-and-{}{}-{}", name, name2, adj1, adj2, prefix, animal)
     }else{
         // It's a job!
         let prefix = get_job_prefix(&mut rng);
-        // println!("Total Combinations {:?}", combinations_jobs * prefixes.len());
+        // println!("Total Combinations {:?}", combinations_jobs * JOBS_PREFIX.len());
         format!("{}-{}-the-{}-and-{}{}-{}", name, name2, adj1, adj2, prefix, job)
     }
 
+}
+
+
+fn get_max_len(items: &[&str]) -> usize {
+    items.iter().map(|n|n.len()).max().unwrap()
+}
+
+#[inline]
+/// Returns the theoretical maximum length of the string returned by `get_very_long_id`
+pub fn get_very_long_id_max_len() -> usize {
+    let max_pefix = std::cmp::max(get_max_len(&ANIMAL_PREFIX), get_max_len(&JOBS_PREFIX));
+    get_max_len(&NAMES) + 
+    get_max_len(&NAMES) + 
+    get_max_len(&ADJECTIVES) + 
+    get_max_len(&ADJECTIVES) + 
+    get_max_len(&ANIMALS) + 
+    get_max_len(&JOBS) +
+    max_pefix
+}
+#[inline]
+/// Returns the theoretical maximum length of the string returned by `get_long_id`
+pub fn get_long_id_max_len() -> usize {
+    let max_pefix = std::cmp::max(get_max_len(&ANIMAL_PREFIX), get_max_len(&JOBS_PREFIX));
+    get_max_len(&NAMES) + 
+    get_max_len(&ADJECTIVES) + 
+    get_max_len(&ADJECTIVES) + 
+    get_max_len(&ANIMALS) + 
+    get_max_len(&JOBS) +
+    max_pefix
+}
+
+#[inline]
+/// Returns the theoretical maximum length of the string returned by `get__id`
+pub fn get_id_max_len() -> usize {
+    let max_pefix = std::cmp::max(get_max_len(&ANIMAL_PREFIX), get_max_len(&JOBS_PREFIX));
+    get_max_len(&NAMES) + 
+    get_max_len(&ADJECTIVES) + 
+    get_max_len(&ANIMALS) + 
+    get_max_len(&JOBS) +
+    max_pefix
 }
 
 #[inline]
@@ -179,6 +219,9 @@ mod tests {
         println!("{}", get_very_long_id());
         println!("{}", get_very_long_id());
         println!("{}", get_very_long_id());
+        println!("{}", get_id_max_len());
+        println!("{}", get_long_id_max_len());
+        println!("{}", get_very_long_id_max_len());
     }
 }
 
