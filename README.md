@@ -13,7 +13,7 @@ Simply add a corresponding entry to your `Cargo.toml` dependency list:
 
 ```toml,ignore
 [dependencies]
-cool-id-generator = "0.1"
+cool-id-generator = "0.2"
 ```
 
 ### Tests
