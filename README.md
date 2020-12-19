@@ -15,3 +15,18 @@ Simply add a corresponding entry to your `Cargo.toml` dependency list:
 [dependencies]
 cool-id-generator = "0.1"
 ```
+
+### Tests
+
+`cargo test -- --nocapture`
+
+### Benchmark
+
+`cargo bench`
+
+```
+running 3 tests
+test tests::bench_id           ... bench:         243 ns/iter (+/- 51)
+test tests::bench_long_id      ... bench:         298 ns/iter (+/- 63)
+test tests::bench_very_long_id ... bench:         328 ns/iter (+/- 46)
+```
