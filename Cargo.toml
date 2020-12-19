@@ -11,4 +11,4 @@ keywords = ["id", "generator", "human", "readable"]
 license = "Unlicense"
 
 [dependencies]
-rand = "0.7.3"
+rand = "0.8"
