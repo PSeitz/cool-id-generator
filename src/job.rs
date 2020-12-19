@@ -1,5 +1,5 @@
 
-pub(crate) const JOBS: [&'static str;70] = [
+pub(crate) const JOBS: [&'static str;69] = [
     "carpenter",
     "butcher",
     "hunter",
@@ -34,7 +34,6 @@ pub(crate) const JOBS: [&'static str;70] = [
     "host",
     "illusionist",
     "impressionist",
-    "itinerant poet",
     "kobzar",
     "lirnyk",
     "magician",
