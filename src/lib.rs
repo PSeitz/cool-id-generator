@@ -16,6 +16,13 @@ fn main() {
 }
 ```
 */
+#![no_std]
+
+#[macro_use]
+extern crate alloc;
+use alloc::string::String;
+
+
 use crate::job::JOBS;
 use crate::animal::ANIMALS;
 use crate::adjective::ADJECTIVES;
@@ -138,7 +145,7 @@ fn get_max_len(items: &[&str]) -> usize {
 #[inline]
 /// Returns the theoretical maximum length of the string returned by `get_very_long_id`
 pub fn get_very_long_id_max_len() -> usize {
-    let max_pefix = std::cmp::max(get_max_len(&ANIMAL_PREFIX), get_max_len(&JOBS_PREFIX));
+    let max_pefix = core::cmp::max(get_max_len(&ANIMAL_PREFIX), get_max_len(&JOBS_PREFIX));
     get_max_len(&NAMES) + 
     get_max_len(&NAMES) + 
     get_max_len(&ADJECTIVES) + 
@@ -150,7 +157,7 @@ pub fn get_very_long_id_max_len() -> usize {
 #[inline]
 /// Returns the theoretical maximum length of the string returned by `get_long_id`
 pub fn get_long_id_max_len() -> usize {
-    let max_pefix = std::cmp::max(get_max_len(&ANIMAL_PREFIX), get_max_len(&JOBS_PREFIX));
+    let max_pefix = core::cmp::max(get_max_len(&ANIMAL_PREFIX), get_max_len(&JOBS_PREFIX));
     get_max_len(&NAMES) + 
     get_max_len(&ADJECTIVES) + 
     get_max_len(&ADJECTIVES) + 
@@ -162,7 +169,7 @@ pub fn get_long_id_max_len() -> usize {
 #[inline]
 /// Returns the theoretical maximum length of the string returned by `get__id`
 pub fn get_id_max_len() -> usize {
-    let max_pefix = std::cmp::max(get_max_len(&ANIMAL_PREFIX), get_max_len(&JOBS_PREFIX));
+    let max_pefix = core::cmp::max(get_max_len(&ANIMAL_PREFIX), get_max_len(&JOBS_PREFIX));
     get_max_len(&NAMES) + 
     get_max_len(&ADJECTIVES) + 
     get_max_len(&ANIMALS) + 
@@ -184,44 +191,46 @@ fn get_job_prefix(rng: &mut rand::rngs::ThreadRng) -> &'static str {
 
 #[cfg(test)]
 mod tests {
+    extern crate std;
     use crate::*;
     #[test]
     fn it_works() {
 
         // let yo: Vec<String> = (0..1000).map(|_|get_id()).collect();
         // println!("{:?}", yo.join(" "));
-        println!("{}", get_id());
-        println!("{}", get_id());
-        println!("{}", get_id());
-        println!("{}", get_id());
-        println!("{}", get_id());
-        println!("{}", get_id());
-        println!("{}", get_id());
-        println!("{}", get_id());
-        println!("{}", get_id());
 
-        println!("{}", get_long_id());
-        println!("{}", get_long_id());
-        println!("{}", get_long_id());
-        println!("{}", get_long_id());
-        println!("{}", get_long_id());
-        println!("{}", get_long_id());
-        println!("{}", get_long_id());
-        println!("{}", get_long_id());
-        println!("{}", get_long_id());
+        // println!("{}", get_id());
+        // println!("{}", get_id());
+        // println!("{}", get_id());
+        // println!("{}", get_id());
+        // println!("{}", get_id());
+        // println!("{}", get_id());
+        // println!("{}", get_id());
+        // println!("{}", get_id());
+        // println!("{}", get_id());
 
-        println!("{}", get_very_long_id());
-        println!("{}", get_very_long_id());
-        println!("{}", get_very_long_id());
-        println!("{}", get_very_long_id());
-        println!("{}", get_very_long_id());
-        println!("{}", get_very_long_id());
-        println!("{}", get_very_long_id());
-        println!("{}", get_very_long_id());
-        println!("{}", get_very_long_id());
-        println!("{}", get_id_max_len());
-        println!("{}", get_long_id_max_len());
-        println!("{}", get_very_long_id_max_len());
+        // println!("{}", get_long_id());
+        // println!("{}", get_long_id());
+        // println!("{}", get_long_id());
+        // println!("{}", get_long_id());
+        // println!("{}", get_long_id());
+        // println!("{}", get_long_id());
+        // println!("{}", get_long_id());
+        // println!("{}", get_long_id());
+        // println!("{}", get_long_id());
+
+        // println!("{}", get_very_long_id());
+        // println!("{}", get_very_long_id());
+        // println!("{}", get_very_long_id());
+        // println!("{}", get_very_long_id());
+        // println!("{}", get_very_long_id());
+        // println!("{}", get_very_long_id());
+        // println!("{}", get_very_long_id());
+        // println!("{}", get_very_long_id());
+        // println!("{}", get_very_long_id());
+        // println!("{}", get_id_max_len());
+        // println!("{}", get_long_id_max_len());
+        // println!("{}", get_very_long_id_max_len());
     }
 }
 
