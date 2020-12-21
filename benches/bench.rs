@@ -8,7 +8,7 @@ mod tests {
     use test::Bencher;
     #[bench]
     fn bench_id(b: &mut Bencher) {
-        b.iter(|| get_id(Size::Short));
+        b.iter(|| get_id(Size::Medium));
     }
     #[bench]
     fn bench_long_id(b: &mut Bencher) {

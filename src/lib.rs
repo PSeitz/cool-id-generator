@@ -9,7 +9,7 @@ honest-turbo-tailor-gregory, romantic-robot-chicken-kenneth and happy-ultra-bari
 use cool_id_generator::{get_id, Size};
 
 fn main() {
-    let my_id = get_id(Size::Short);
+    let my_id = get_id(Size::Medium);
     println!("{:?}", my_id);
     let my_long_id = get_id(Size::Long);
     println!("{:?}", my_long_id);
@@ -22,21 +22,17 @@ fn main() {
 extern crate alloc;
 use alloc::string::String;
 
-use crate::adjective::ADJECTIVES;
-use crate::animal::ANIMALS;
-use crate::job::JOBS;
-use crate::names::NAMES;
-use crate::prefix::ANIMAL_PREFIX;
-use crate::prefix::JOBS_PREFIX;
+pub mod words;
+use words::{ADJECTIVES, ANIMALS, ANIMAL_PREFIX, JOBS, JOBS_PREFIX, NAMES};
 
 use rand::seq::SliceRandom;
 use rand::thread_rng;
 
-mod adjective;
-mod animal;
-mod job;
-mod names;
-mod prefix;
+// mod adjective;
+// mod animal;
+// mod job;
+// mod names;
+// mod prefix;
 
 #[inline]
 pub fn get_id(size: Size) -> String {
@@ -44,31 +40,32 @@ pub fn get_id(size: Size) -> String {
 
     let animal_or_job = {
         if rand::random::<bool>() {
-            format!(
-                "{}-{}",
+            (
                 ANIMAL_PREFIX.choose(&mut rng).unwrap(),
-                ANIMALS.choose(&mut rng).unwrap()
+                ANIMALS.choose(&mut rng).unwrap(),
             )
         } else {
-            format!(
-                "{}-{}",
+            (
                 JOBS_PREFIX.choose(&mut rng).unwrap(),
-                JOBS.choose(&mut rng).unwrap()
+                JOBS.choose(&mut rng).unwrap(),
             )
         }
     };
 
     match size {
-        Size::Short => {
+        Size::Medium => {
             let adj1 = ADJECTIVES.choose(&mut rng).unwrap();
             let name = NAMES.choose(&mut rng).unwrap();
-            format!("{}{}-{}", adj1, animal_or_job, name)
+            format!("{}{}-{}-{}", adj1, animal_or_job.0, animal_or_job.1, name)
         }
         Size::Long => {
             let name = NAMES.choose(&mut rng).unwrap();
             let adj1 = ADJECTIVES.choose(&mut rng).unwrap();
             let adj2 = ADJECTIVES.choose(&mut rng).unwrap();
-            format!("{}-the-{}-and-{}{}", name, adj1, adj2, animal_or_job)
+            format!(
+                "{}-the-{}-and-{}{}-{}",
+                name, adj1, adj2, animal_or_job.0, animal_or_job.1
+            )
         }
         Size::VeryLong => {
             let name = NAMES.choose(&mut rng).unwrap();
@@ -76,20 +73,21 @@ pub fn get_id(size: Size) -> String {
             let adj1 = ADJECTIVES.choose(&mut rng).unwrap();
             let adj2 = ADJECTIVES.choose(&mut rng).unwrap();
             format!(
-                "{}-{}-the-{}-and-{}{}",
-                name, name2, adj1, adj2, animal_or_job
+                "{}-{}-the-{}-and-{}{}-{}",
+                name, name2, adj1, adj2, animal_or_job.0, animal_or_job.1
             )
         }
     }
 }
 
 /// Size which can be cast into `usize` to use as the size of the output byte array e.g.
-/// # Example
+/// ## Example
 /// ```
 /// use cool_id_generator::Size;
 ///
 /// fn main() {
-///     let byte_array: [u8; Size::Short as usize] = [0u8; Size::Short as usize];
+///     const size: usize = Size::Medium as usize;
+///     let byte_array: [u8; size] = [0u8; size];
 /// }
 /// ```
 pub enum Size {
@@ -97,7 +95,7 @@ pub enum Size {
     /// e.g. "unpleasant-steampunk-poet-gerald"
     ///
     /// Generates 1 billion combinations
-    Short = get_id_max_len() as isize,
+    Medium = get_id_max_len() as isize,
     /// Creates ids in the format of {name}-the-{adjective}-and-{adjective}-prefix-{animal|job}
     /// e.g. "unpleasant-steampunk-poet-gerald"
     ///
@@ -128,9 +126,7 @@ const fn get_max_len(items: &[&str]) -> usize {
     largest
 }
 
-#[inline]
-/// Returns the theoretical maximum byte length of the string returned by `get_very_long_id`
-pub const fn get_very_long_id_max_len() -> usize {
+const fn get_very_long_id_max_len() -> usize {
     max(get_max_len(&ANIMAL_PREFIX), get_max_len(&JOBS_PREFIX))
         + get_max_len(&NAMES)
         + get_max_len(&NAMES)
@@ -140,9 +136,7 @@ pub const fn get_very_long_id_max_len() -> usize {
         + get_max_len(&JOBS)
 }
 
-#[inline]
-/// Returns the theoretical maximum byte length of the string returned by `get_long_id`
-pub const fn get_long_id_max_len() -> usize {
+const fn get_long_id_max_len() -> usize {
     max(get_max_len(&ANIMAL_PREFIX), get_max_len(&JOBS_PREFIX))
         + get_max_len(&NAMES)
         + get_max_len(&ADJECTIVES)
@@ -151,9 +145,7 @@ pub const fn get_long_id_max_len() -> usize {
         + get_max_len(&JOBS)
 }
 
-#[inline]
-/// Returns the theoretical maximum byte length of the string returned by `get__id`
-pub const fn get_id_max_len() -> usize {
+const fn get_id_max_len() -> usize {
     max(get_max_len(&ANIMAL_PREFIX), get_max_len(&JOBS_PREFIX))
         + get_max_len(&NAMES)
         + get_max_len(&ADJECTIVES)

@@ -1,4 +1,4 @@
-pub(crate) const JOBS_PREFIX: [&'static str; 7] = [
+pub const JOBS_PREFIX: [&'static str; 7] = [
     "-robot",
     "-laser",
     "-turbo",
@@ -7,6 +7,6 @@ pub(crate) const JOBS_PREFIX: [&'static str; 7] = [
     "-jobless",
     "-homeless",
 ];
-pub(crate) const ANIMAL_PREFIX: [&'static str; 8] = [
+pub const ANIMAL_PREFIX: [&'static str; 8] = [
     "-robot", "-mecha", "-dino", "-laser", "-turbo", "-rocket", "-dressed", "-space",
 ];

@@ -1,4 +1,4 @@
-pub(crate) const NAMES: [&'static str; 18239] = [
+pub const NAMES: [&'static str; 18239] = [
     "michael",
     "christopher",
     "jessica",
