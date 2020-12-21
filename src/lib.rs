@@ -28,12 +28,6 @@ use words::{ADJECTIVES, ANIMALS, ANIMAL_PREFIX, JOBS, JOBS_PREFIX, NAMES};
 use rand::seq::SliceRandom;
 use rand::thread_rng;
 
-// mod adjective;
-// mod animal;
-// mod job;
-// mod names;
-// mod prefix;
-
 #[inline]
 pub fn get_id(size: Size) -> String {
     let mut rng = thread_rng();
