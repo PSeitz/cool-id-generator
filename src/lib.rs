@@ -137,44 +137,51 @@ pub fn get_very_long_id() -> String {
 
 }
 
+const fn max(a: usize, b: usize) -> usize { [a, b][(a < b) as usize] }
 
-fn get_max_len(items: &[&str]) -> usize {
-    items.iter().map(|n|n.len()).max().unwrap()
+// returns maximum byte lengh of the given array
+const fn get_max_len(items: &[&str]) -> usize {
+    let mut i = 0;
+    let mut largest = 0;
+    while i < items.len() {
+        let len = items[i].len();
+        if len > largest { largest = len };
+        i += 1;
+    }
+    largest
 }
 
 #[inline]
-/// Returns the theoretical maximum length of the string returned by `get_very_long_id`
-pub fn get_very_long_id_max_len() -> usize {
-    let max_pefix = core::cmp::max(get_max_len(&ANIMAL_PREFIX), get_max_len(&JOBS_PREFIX));
+/// Returns the theoretical maximum byte length of the string returned by `get_very_long_id`
+pub const fn get_very_long_id_max_len() -> usize {
+    max(get_max_len(&ANIMAL_PREFIX), get_max_len(&JOBS_PREFIX)) +
     get_max_len(&NAMES) + 
     get_max_len(&NAMES) + 
     get_max_len(&ADJECTIVES) + 
     get_max_len(&ADJECTIVES) + 
     get_max_len(&ANIMALS) + 
-    get_max_len(&JOBS) +
-    max_pefix
-}
-#[inline]
-/// Returns the theoretical maximum length of the string returned by `get_long_id`
-pub fn get_long_id_max_len() -> usize {
-    let max_pefix = core::cmp::max(get_max_len(&ANIMAL_PREFIX), get_max_len(&JOBS_PREFIX));
-    get_max_len(&NAMES) + 
-    get_max_len(&ADJECTIVES) + 
-    get_max_len(&ADJECTIVES) + 
-    get_max_len(&ANIMALS) + 
-    get_max_len(&JOBS) +
-    max_pefix
+    get_max_len(&JOBS)
 }
 
 #[inline]
-/// Returns the theoretical maximum length of the string returned by `get__id`
-pub fn get_id_max_len() -> usize {
-    let max_pefix = core::cmp::max(get_max_len(&ANIMAL_PREFIX), get_max_len(&JOBS_PREFIX));
+/// Returns the theoretical maximum byte length of the string returned by `get_long_id`
+pub const fn get_long_id_max_len() -> usize {
+    max(get_max_len(&ANIMAL_PREFIX), get_max_len(&JOBS_PREFIX)) +
+    get_max_len(&NAMES) + 
+    get_max_len(&ADJECTIVES) + 
+    get_max_len(&ADJECTIVES) + 
+    get_max_len(&ANIMALS) + 
+    get_max_len(&JOBS) 
+}
+
+#[inline]
+/// Returns the theoretical maximum byte length of the string returned by `get__id`
+pub const fn get_id_max_len() -> usize {
+    max(get_max_len(&ANIMAL_PREFIX), get_max_len(&JOBS_PREFIX)) +
     get_max_len(&NAMES) + 
     get_max_len(&ADJECTIVES) + 
     get_max_len(&ANIMALS) + 
-    get_max_len(&JOBS) +
-    max_pefix
+    get_max_len(&JOBS)
 }
 
 #[inline]
