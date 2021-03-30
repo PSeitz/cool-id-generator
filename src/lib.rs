@@ -150,6 +150,8 @@ const fn get_id_max_len() -> usize {
 #[cfg(test)]
 mod tests {
     extern crate std;
+
+    use std::println;
     use crate::*;
     #[test]
     fn it_works() {
@@ -157,37 +159,19 @@ mod tests {
         // let yo: Vec<String> = (0..1000).map(|_|get_id()).collect();
         // println!("{:?}", yo.join(" "));
 
-        // println!("{}", get_id());
-        // println!("{}", get_id());
-        // println!("{}", get_id());
-        // println!("{}", get_id());
-        // println!("{}", get_id());
-        // println!("{}", get_id());
-        // println!("{}", get_id());
-        // println!("{}", get_id());
-        // println!("{}", get_id());
+        println!("{}", get_id(Size::Medium));
+        println!("{}", get_id(Size::Medium));
+        println!("{}", get_id(Size::Medium));
+        println!("{}", get_id(Size::Long));
+        println!("{}", get_id(Size::Long));
+        println!("{}", get_id(Size::Long));
+        println!("{}", get_id(Size::VeryLong));
+        println!("{}", get_id(Size::VeryLong));
+        println!("{}", get_id(Size::VeryLong));
 
-        // println!("{}", get_long_id());
-        // println!("{}", get_long_id());
-        // println!("{}", get_long_id());
-        // println!("{}", get_long_id());
-        // println!("{}", get_long_id());
-        // println!("{}", get_long_id());
-        // println!("{}", get_long_id());
-        // println!("{}", get_long_id());
-        // println!("{}", get_long_id());
 
-        // println!("{}", get_very_long_id());
-        // println!("{}", get_very_long_id());
-        // println!("{}", get_very_long_id());
-        // println!("{}", get_very_long_id());
-        // println!("{}", get_very_long_id());
-        // println!("{}", get_very_long_id());
-        // println!("{}", get_very_long_id());
-        // println!("{}", get_very_long_id());
-        // println!("{}", get_very_long_id());
-        // println!("{}", get_id_max_len());
-        // println!("{}", get_long_id_max_len());
-        // println!("{}", get_very_long_id_max_len());
+        println!("{}", get_id_max_len());
+        println!("{}", get_long_id_max_len());
+        println!("{}", get_very_long_id_max_len());
     }
 }
