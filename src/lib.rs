@@ -85,20 +85,11 @@ pub fn get_id(size: Size) -> String {
 /// }
 /// ```
 pub enum Size {
-    /// Creates ids in the format of {adjective}-{prefix}-{animal|job}-{name}
-    /// e.g. "unpleasant-steampunk-poet-gerald"
-    ///
-    /// Generates 1 billion combinations
+    /// The largest size (in bytes) of a `Medium` ID; 1 billion combinations
     Medium = get_id_max_len() as isize,
-    /// Creates ids in the format of {name}-the-{adjective}-and-{adjective}-prefix-{animal|job}
-    /// e.g. "unpleasant-steampunk-poet-gerald"
-    ///
-    /// Generates 115 billion combinations
+    /// The largest size (in bytes) of a `Long` ID; 115 billion combinations
     Long = get_long_id_max_len() as isize,
-    /// Creates ids in the format of {name1}-{name2}-the-{adjective}-and-{adjective}-prefix-{animal|job}
-    /// e.g. "unpleasant-steampunk-poet-gerald"
-    ///
-    /// Generates 10^15 combinations (or 2088136477473228)
+    /// The largest size (in bytes) of a `VeryLong` ID; 10^15 combinations (or 2,088,136,477,473,228)
     VeryLong = get_very_long_id_max_len() as isize,
 }
 
