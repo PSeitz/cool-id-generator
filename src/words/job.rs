@@ -1,5 +1,4 @@
-
-pub(crate) const JOBS: [&'static str;69] = [
+pub const JOBS: [&'static str; 69] = [
     "carpenter",
     "butcher",
     "hunter",
@@ -70,4 +69,3 @@ pub(crate) const JOBS: [&'static str;69] = [
     "paleontologist",
     "pathologist",
 ];
-

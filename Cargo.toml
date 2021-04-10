@@ -1,5 +1,5 @@
 [package]
-authors = ["Pascal Seitz <pascal.seitz@sap.com>"]
+authors = ["Pascal Seitz <pascal.seitz@sap.com>", "mriise <mark.riise26@gmail.com>"]
 description = "generates the best ids, which are fun to read and fun to eat"
 edition = "2018"
 name = "cool-id-generator"
