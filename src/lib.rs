@@ -8,12 +8,11 @@ honest-turbo-tailor-gregory, romantic-robot-chicken-kenneth and happy-ultra-bari
 #[macro_use]
 use cool_id_generator::{get_id, Size};
 
-fn main() {
-    let my_id = get_id(Size::Medium);
-    println!("{:?}", my_id);
-    let my_long_id = get_id(Size::Long);
-    println!("{:?}", my_long_id);
-}
+let my_id = get_id(Size::Medium);
+println!("{:?}", my_id);
+let my_long_id = get_id(Size::Long);
+println!("{:?}", my_long_id);
+
 ```
 */
 #![no_std]
