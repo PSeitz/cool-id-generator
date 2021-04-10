@@ -79,10 +79,8 @@ pub fn get_id(size: Size) -> String {
 /// ```
 /// use cool_id_generator::Size;
 ///
-/// fn main() {
-///     const size: usize = Size::Medium as usize;
-///     let byte_array: [u8; size] = [0u8; size];
-/// }
+/// const size: usize = Size::Medium as usize;
+/// let byte_array: [u8; size] = [0u8; size];
 /// ```
 pub enum Size {
     /// The largest size (in bytes) of a `Medium` ID; 1 billion combinations
