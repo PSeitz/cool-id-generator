@@ -142,11 +142,10 @@ const fn get_id_max_len() -> usize {
 mod tests {
     extern crate std;
 
-    use std::println;
     use crate::*;
+    use std::println;
     #[test]
     fn it_works() {
-
         // let yo: Vec<String> = (0..1000).map(|_|get_id()).collect();
         // println!("{:?}", yo.join(" "));
 
@@ -159,7 +158,6 @@ mod tests {
         println!("{}", get_id(Size::VeryLong));
         println!("{}", get_id(Size::VeryLong));
         println!("{}", get_id(Size::VeryLong));
-
 
         println!("{}", get_id_max_len());
         println!("{}", get_long_id_max_len());
