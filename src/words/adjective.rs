@@ -1,4 +1,4 @@
-pub const ADJECTIVES: [&'static str; 114] = [
+pub const ADJECTIVES: [&str; 114] = [
     "adventurous",
     "ambitious",
     "angry",

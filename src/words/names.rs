@@ -1,4 +1,4 @@
-pub const NAMES: [&'static str; 18239] = [
+pub const NAMES: [&str; 18239] = [
     "michael",
     "christopher",
     "jessica",
