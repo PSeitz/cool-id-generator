@@ -8,7 +8,7 @@ readme = "README.md"
 repository = "https://github.com/PSeitz/cool-id-generator"
 homepage = "https://github.com/PSeitz/cool-id-generator"
 keywords = ["id", "generator", "human", "readable"]
-license = "Unlicense"
+license = "MIT"
 
 [dependencies]
 rand = "0.8"
